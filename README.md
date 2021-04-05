@@ -4,7 +4,7 @@ This branch is a keymap for XD60 rev3 PCB
 
 ## Setup
 
-    git submodule add https://github.com/esnahn/qmk_keymaps.git keyboards/xd60/keymaps/esnahn
+    git submodule add -b xd60 https://github.com/esnahn/qmk_keymaps.git keyboards/xd60/keymaps/esnahn
 
 ## Build
 
