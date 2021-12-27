@@ -2,45 +2,14 @@
 #include "esnahn.h"
 
 
-enum custom_keycodes {
-  MDOT = SAFE_RANGE, // Alt + 183
-  // RSQUOTE // Alt + 8217 (doesn't work)
-};
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-    case MDOT: // Alt + 183
-      if (record->event.pressed) {
-        // when keycode is pressed
-        SEND_STRING(SS_DOWN(X_LALT));
-        SEND_STRING(SS_TAP(X_P1) SS_TAP(X_P8) SS_TAP(X_P3));
-        SEND_STRING(SS_UP(X_LALT));
-      } else {
-        // when keycode is released
-      }
-      break;
-/*     case RSQUOTE:
-      if (record->event.pressed) {
-        // when keycode is pressed
-        SEND_STRING(SS_DOWN(X_LALT));
-        SEND_STRING(SS_TAP(X_P8) SS_TAP(X_P2) SS_TAP(X_P1) SS_TAP(X_P7));
-        SEND_STRING(SS_UP(X_LALT));
-      } else {
-        // when keycode is released
-      }
-      break; */
-  }
-  return true;
-};
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // 0: Base Layer
   [0] = LAYOUT_esnahn( \
-      KC_ESC,      KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSPC,          \
+      KC_GRV,      KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSPC,          \
       KC_TAB,      KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, LT(11,KC_BSLS),   \
-      LT(10,KC_GRV),KC_A,   KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT,           \
+      KC_ESC,      KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT,           \
       KC_LSFT,              KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  RSFT_T(KC_SLSH),  KC_UP,   KC_DEL,  \
-      KC_LCTL,     KC_LGUI, KC_LALT,          CTL_T(KC_LANG1),  KC_SPC,  RSFT_T(KC_HOME), RCTL_T(KC_END),    XXXXXXX, KC_LEFT, KC_DOWN, KC_RIGHT \
+      KC_LCTL,     KC_LGUI, KC_LALT,          LT(10, KC_LANG1), KC_SPC,                    KC_HOME, KC_END,  KC_RCTL, KC_LEFT, KC_DOWN, KC_RIGHT \
   ),    
   // 1: Plain Layer 
   [1] = LAYOUT_esnahn( \
@@ -50,13 +19,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______,              _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______, _______, \
       _______,     _______, _______,          KC_SPC,           KC_SPC,                    KC_LANG1,_______, _______, _______, _______, _______  \
   ),
-  // 10: Caps Lock Layer
+  // 10: Left space Layer
   [10] = LAYOUT_esnahn( \
       _______,     KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_PSCR,          \
-      _______,     KC_F5,   KC_F6,   KC_F7,   KC_F8,   _______, _______, _______, _______, _______, _______, KC_VOLD, KC_VOLU, _______,          \
-      _______,     KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, _______, _______, _______, _______, _______, _______,          _______,          \
-      _______,              RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, _______, _______, MDOT,    MDOT,    _______,          KC_PGUP, KC_INS,  \
-      _______,     _______, _______,          TG(1),            _______,                   _______, _______, _______, KC_HOME, KC_PGDN, KC_END   \
+      _______,     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_VOLD, KC_VOLU, _______,          \
+      _______,     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,          \
+      _______,              _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          KC_PGUP, KC_INS,  \
+      _______,     _______, _______,          _______,          _______,                   _______, _______, _______, KC_HOME, KC_PGDN, KC_END   \
   ),
   // 11: Backslash Layer
   [11] = LAYOUT_esnahn( \
@@ -106,17 +75,3 @@ void matrix_init_user(void) {
 void keyboard_post_init_user(void) {
   // This is ran as the very last task in the keyboard initialization process.
 }
-
-bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-    case CTL_T(KC_LANG1):
-      return true;
-    /* case SFT_T(KC_SPC):
-      return true; */
-    default:
-      return false;
-  }
-}
-
-
-

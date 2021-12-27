@@ -1,3 +1,12 @@
-// By default, if you press another key while pressing mod tap key, the first keypress was mod.
-// But with this, for some keys, pressing another key doesn't make the keypress mod automatically.
-#define IGNORE_MOD_TAP_INTERRUPT_PER_KEY
+// https://beta.docs.qmk.fm/using-qmk/software-features/tap_hold#ignore-mod-tap-interrupt
+// An example of a sequence which will be affected by the IGNORE_MOD_TAP_INTERRUPT option
+// (assuming that options like PERMISSIVE_HOLD or HOLD_ON_OTHER_KEY_PRESS are not enabled):
+// SFT_T(KC_A) Down
+// KC_X Down
+// SFT_T(KC_A) Up
+// KC_X Up
+// Normally, this would send a capital X (SHIFT+x), even if the sequence is performed faster than the TAPPING_TERM.
+// However, if the IGNORE_MOD_TAP_INTERRUPT option is enabled, the SFT_T(KC_A) key must be held longer than the TAPPING_TERM
+// to register the hold action. A quick tap will output ax in this case, while a hold will still output a capital X (SHIFT+x).
+
+// #define IGNORE_MOD_TAP_INTERRUPT
