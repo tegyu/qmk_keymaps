@@ -54,6 +54,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ) */
 };
 
+
+
+// Light LEDs 6 to 9 and 12 to 15 red when caps lock is active. Hard to ignore!
+const rgblight_segment_t PROGMEM my_capslock_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 2, HSV_RED},       // Light 2 LED(s), starting with LED 0
+    {RGBLED_NUM-2, 2, HSV_RED}       // Light 2 LED(s), finishing with the last LED
+);
+// Light LEDs 9 & 10 in cyan when keyboard layer 1 is active
+const rgblight_segment_t PROGMEM my_spacebar_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, RGBLED_NUM/2, HSV_CYAN}
+);
+
+// Now define the array of layers. Later layers take precedence
+const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
+    my_capslock_layer,
+    my_spacebar_layer    // Overrides caps lock layer
+);
+
+
+
 // Loop
 void matrix_scan_user(void) {
   // Empty
@@ -74,4 +94,41 @@ void matrix_init_user(void) {
 
 void keyboard_post_init_user(void) {
   // This is ran as the very last task in the keyboard initialization process.
+
+  // enable RGB and turn it off (black)
+  rgblight_enable();
+  rgblight_sethsv(HSV_OFF);
+
+  // Enable the LED layers
+  rgblight_layers = my_rgb_layers;
+}
+
+bool led_update_user(led_t led_state) {
+  // QMK provides methods to read 5 of the LEDs defined in the HID spec:
+  // the API hooks provided allow custom control of the LED behavior. 
+  // These functions will be called when the state of one of those 5 LEDs changes. 
+  // It receives the LED state as a struct parameter.
+
+  // set the state of the first RGB layer (my_capslock_layer) to match caps lock's
+  rgblight_set_layer_state(0, led_state.caps_lock);
+
+  // By convention, return true from led_update_user() to get the led_update_kb() hook to run its code, 
+  // and return false when you would prefer not to run the code in led_update_kb().
+  return true;
+}
+
+
+/* layer_state_t default_layer_state_set_user(layer_state_t state) {
+    // Callback for default layer functions, for users. Called on keyboard initialization.
+
+    rgblight_set_layer_state(1, layer_state_cmp(state, _DVORAK));
+    return state;
+} */
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    // Callback for layer functions, for users.
+
+    // lights up when layer 1 (plain spacebar and lang key) is set
+    rgblight_set_layer_state(1, layer_state_cmp(state, 1));
+    return state;
 }

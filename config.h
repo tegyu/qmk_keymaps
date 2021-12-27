@@ -10,3 +10,14 @@
 // to register the hold action. A quick tap will output ax in this case, while a hold will still output a capital X (SHIFT+x).
 
 // #define IGNORE_MOD_TAP_INTERRUPT
+
+
+// If defined, the RGB lighting will be switched off when the host goes to sleep
+
+#define RGBLIGHT_SLEEP
+
+// These make it easy to use your underglow LEDs as status indicators to show 
+// which keyboard layer is currently active, or the state of caps lock, 
+// all without disrupting any animations.
+
+#define RGBLIGHT_LAYERS
