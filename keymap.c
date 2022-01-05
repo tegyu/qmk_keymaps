@@ -55,7 +55,7 @@ const rgblight_segment_t PROGMEM my_capslock_layer[] = RGBLIGHT_LAYER_SEGMENTS(
 );
 // Light LEDs 9 & 10 in cyan when keyboard layer 1 is active
 const rgblight_segment_t PROGMEM my_spacebar_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, RGBLED_NUM/2, HSV_CYAN}
+    {0+1, RGBLED_NUM/2-2, HSV_WHITE}
 );
 
 // Now define the array of layers. Later layers take precedence
