@@ -36,14 +36,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______,     _______, _______,          TG(1),            _______,                   _______, _______, _______, KC_HOME, KC_PGDN, KC_END   \
   ),
 
-/*   // 12: Shift Layer
-  [12] = LAYOUT_esnahn( \
-      S(KC_ESC), S(KC_1), S(KC_2), S(KC_3), S(KC_4), S(KC_5), S(KC_6), S(KC_7), S(KC_8), S(KC_9), S(KC_0), KC_UNDS, KC_PLUS, S(KC_BSPC),         \
-      S(KC_TAB), S(KC_Q), S(KC_W), S(KC_E), S(KC_R), S(KC_T), S(KC_Y), S(KC_U), S(KC_I), S(KC_O), S(KC_P), KC_LCBR, KC_RCBR,   KC_PIPE,          \
-        KC_TILD, S(KC_A), S(KC_S), S(KC_D), S(KC_F), S(KC_G), S(KC_H), S(KC_J), S(KC_K), S(KC_L), KC_COLN, KC_DQUO,          S(KC_ENT),          \
-        KC_QUES,          S(KC_Z), S(KC_X), S(KC_C), S(KC_V), S(KC_B), S(KC_N), S(KC_M), KC_LABK, KC_RABK, KC_QUES,            KC_PGUP, KC_INS,  \
-        _______, _______, _______,          KC_LCTL,          S(KC_SPC),                 _______, KC_PGUP, KC_PGDN,   KC_HOME, KC_PGDN, KC_END   \
-  ), */
 /*   // 15: Transparent Layer Template
   [15] = LAYOUT_esnahn( \
       _______,     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          \
