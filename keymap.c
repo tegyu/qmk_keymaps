@@ -1,33 +1,69 @@
 #include QMK_KEYBOARD_H
 #include "esnahn.h"
 
+/*K000, K001, K002, K003, K004, K005, K006, K007, K008, K009, K010, K011, K012, K013, K014, K015, \
+	K100, K101, K102, K103, K104, K105, K106, K107, K108, K109, K110, K111, K112,       K114, K115, \
+	K200,       K202, K203, K204, K205, K206, K207, K208, K209, K210, K211, K212, K213, K214, K215, \
+	K300,       K302, K303, K304, K305, K306, K307, K308, K309, K310, K311, K312, K313,       K315, \
+	K400,       K402, K403, K404, K405, K406, K407, K408, K409, K410, K411,       K413, K414, K415, \
+	K500, K501,       K503, K504,       K506,       K508,       K510, K511,       K513, K514, K515  \ */
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // 0: Base Layer
-  [0] = LAYOUT_esnahn( \
-      KC_GESC,      KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSPC,          \
-      KC_TAB,       KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,          \
-      KC_LNG1,      KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT,           \
-      KC_LSFT,               KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  RSFT_T(KC_SLSH),  KC_UP,   KC_DEL,  \
-      KC_LCTL,      KC_LGUI, KC_LALT,          KC_SPC, LT(10, KC_SPC),                      KC_CAPS, KC_LNG2, KC_QUES, KC_LEFT, KC_DOWN, KC_RIGHT \
-  ),    
-  // 10: right space Layer
-  [10] = LAYOUT_esnahn( \
-      KC_GRV,      KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_PSCR,          \
-      _______,     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_VOLD, KC_VOLU, _______,          \
-      _______,     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,          \
-      _______,              _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_QUES,          KC_PGUP, _______, \
-      _______,     _______, _______,          _______,          _______,                   _______, _______, _______, KC_HOME, KC_PGDN, KC_END   \
+  [0] = LAYOUT_kbd75_esnahn(
+    KC_ESC,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,   KC_PSCR,  MO(11),   KC_MPLY,
+    KC_GRV,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,  KC_EQL,   KC_BSPC,            KC_DEL,
+    KC_TAB,   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,  KC_RBRC,  KC_BSLS,            KC_HOME,
+    KC_LCTL,  KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,            KC_ENT,             KC_END,
+    KC_LSFT,  KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,               KC_COMM,  KC_DOT,   KC_SLSH,  KC_RSFT,            KC_UP,    KC_DEL,
+    KC_LCTL,  KC_LGUI,  KC_LALT,                      KC_SPC,   LT(10, KC_LNG1), KC_SPC,                   ALT_T(KC_HOME),CTL_T(KC_END), KC_LEFT,  KC_DOWN,  KC_RGHT
+  ), 
+  // 1: normal Layer
+  [1] = LAYOUT_kbd75_esnahn(
+    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
+    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,            _______,
+    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,            _______,
+    KC_CAPS,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,            _______,            _______,
+    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,            _______,  _______,  _______,  _______,            _______,  _______,
+    _______,  _______,  _______,                      KC_SPC,   KC_SPC,   KC_SPC,                       KC_LNG1,  KC_LNG2,            _______,  _______,  _______
   ),
+  // 2: shifted function row
+  [2] = LAYOUT_kbd75_esnahn(
+    _______,  S(KC_1),  S(KC_2),  S(KC_3),  S(KC_4),  S(KC_5),  S(KC_6),  S(KC_7),  S(KC_8),  S(KC_9),  S(KC_0),  KC_UNDS,  KC_PLUS,  _______,  _______,  _______,
+    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,            _______,
+    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,            _______,
+    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,            _______,            _______,
+    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,            _______,  _______,  _______,  _______,            _______,  _______,
+    _______,  _______,  _______,                      _______,  _______,  _______,                      _______,  _______,            _______,  _______,  _______
+  ),
+  // 10: middle key Layer
+  [10] = LAYOUT_kbd75_esnahn(
+    _______,  KC_F13,   KC_F14,   KC_F15,   KC_F16,   KC_F17,   KC_F18,   KC_F19,   KC_F20,   KC_F21,   KC_F22,   KC_F23,   KC_F24,   _______,  _______,  _______,
+    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  KC_VOLD,  KC_VOLU,  KC_MUTE,            _______,
+    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,            _______,
+    KC_CAPS,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,            _______,            _______,
+    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,            _______,  _______,  _______,  _______,            _______,  _______,
+    _______,  _______,  _______,                      _______,  _______,  _______,                      _______,  KC_LNG2,            _______,  _______,  _______
+  ),
+  // 11: special key Layer
+  [11] = LAYOUT_kbd75_esnahn(
+    TO(0),    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
+    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  TG(2),    _______,  _______,  _______,  _______,            _______,
+    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,            _______,
+    RESET,    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,            _______,            _______,
+    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,            _______,  _______,  _______,  _______,            _______,  _______,
+    _______,  _______,  _______,                      _______,  TG(1),    _______,                      _______,  _______,            _______,  _______,  _______
+  ),
+  // // 31: transparent Layer
+  // [31] = LAYOUT_kbd75_esnahn(
+  //   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
+  //   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,            _______,
+  //   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,            _______,
+  //   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,            _______,            _______,
+  //   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,            _______,  _______,  _______,  _______,            _______,  _______,
+  //   _______,  _______,  _______,                      _______,  _______,  _______,                      _______,  _______,            _______,  _______,  _______
+  // ),
 
-/*   // 15: Transparent Layer Template
-  [15] = LAYOUT_esnahn( \
-      _______,     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          \
-      _______,     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          \
-      _______,     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,          \
-      _______,              _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______, _______, \
-      _______,     _______, _______,          _______,          _______,                   _______, _______, _______, _______, _______, _______  \
-  ) */
 };
 
 
@@ -37,14 +73,48 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //     {0, 2, HSV_RED},       // Light 2 LED(s), starting with LED 0
 //     {RGBLED_NUM-2, 2, HSV_RED}       // Light 2 LED(s), finishing with the last LED
 // );
-// Light LEDs 9 & 10 in cyan when keyboard layer 1 is active
-const rgblight_segment_t PROGMEM my_spacebar_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, RGBLED_NUM, HSV_WHITE}
+// Light LEDs white when normal layer is active
+const rgblight_segment_t PROGMEM my_normal_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+  {0, RGBLED_NUM, HSV_WHITE}
+);
+// Light LEDs red when shifted layer is active
+const rgblight_segment_t PROGMEM my_shifted_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+  {8, RGBLED_NUM/2, HSV_RED}
+);
+// Light LEDs in rainbow when mod key is down
+const rgblight_segment_t PROGMEM my_special_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+  // { 0, 1, 256 / RGBLED_NUM *  0, 255, 255},
+  // { 1, 1, 256 / RGBLED_NUM *  1, 255, 255},
+  // { 2, 1, 256 / RGBLED_NUM *  2, 255, 255},
+  // { 3, 1, 256 / RGBLED_NUM *  3, 255, 255},
+  // { 4, 1, 256 / RGBLED_NUM *  4, 255, 255},
+  // { 5, 1, 256 / RGBLED_NUM *  5, 255, 255},
+  // { 6, 1, 256 / RGBLED_NUM *  6, 255, 255},
+  // { 7, 1, 256 / RGBLED_NUM *  7, 255, 255},
+  // { 8, 1, 256 / RGBLED_NUM *  8, 255, 255},
+  // { 9, 1, 256 / RGBLED_NUM *  9, 255, 255},
+  // {10, 1, 256 / RGBLED_NUM * 10, 255, 255},
+  // {11, 1, 256 / RGBLED_NUM * 11, 255, 255},
+  // {12, 1, 256 / RGBLED_NUM * 12, 255, 255},
+  // {13, 1, 256 / RGBLED_NUM * 13, 255, 255},
+  // {14, 1, 256 / RGBLED_NUM * 14, 255, 255},
+  // {15, 1, 256 / RGBLED_NUM * 15, 255, 255}
+
+  { 8, 1, 256 / RGBLED_NUM * 0 * 2, 255, 255},
+  { 9, 1, 256 / RGBLED_NUM * 1 * 2, 255, 255},
+  {10, 1, 256 / RGBLED_NUM * 2 * 2, 255, 255},
+  {11, 1, 256 / RGBLED_NUM * 3 * 2, 255, 255},
+  {12, 1, 256 / RGBLED_NUM * 4 * 2, 255, 255},
+  {13, 1, 256 / RGBLED_NUM * 5 * 2, 255, 255},
+  {14, 1, 256 / RGBLED_NUM * 6 * 2, 255, 255},
+  {15, 1, 256 / RGBLED_NUM * 7 * 2, 255, 255}
 );
 
 // Now define the array of layers. Later layers take precedence
 const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
-    my_spacebar_layer
+  my_normal_layer,
+  my_shifted_layer,
+  my_special_layer
 );
 
 
@@ -103,28 +173,9 @@ bool led_update_user(led_t led_state) {
 layer_state_t layer_state_set_user(layer_state_t state) {
     // Callback for layer functions, for users.
 
-    // lights up rgb layer 0 when key layer 10 is set
-    rgblight_set_layer_state(0, IS_LAYER_ON_STATE(state, 10));
+    // lights up rgb layer x when keymap layer y is set
+    rgblight_set_layer_state(0, IS_LAYER_ON_STATE(state, 1));
+    rgblight_set_layer_state(1, IS_LAYER_ON_STATE(state, 2));
+    rgblight_set_layer_state(2, IS_LAYER_ON_STATE(state, 11));
     return state;
 }
-
-// const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-
-//   [0] = LAYOUT(
-//     KC_ESC,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,   KC_PSCR,  MO(1),    KC_DEL,
-//     KC_GRV,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,  KC_EQL,   KC_DEL,   KC_BSPC,  KC_HOME,
-//     KC_TAB,   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,  KC_RBRC,  KC_BSLS,            KC_PGUP,
-//     KC_CAPS,  KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,                      KC_ENT,   KC_PGDN,
-//     KC_LSFT,  MO(1),    KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  KC_RSFT,            KC_UP,    KC_END,
-//     KC_LCTL,  KC_LGUI,  KC_LALT,                      KC_SPC,   KC_SPC,   KC_SPC,                       KC_RALT,  MO(1),    KC_RCTL,  KC_LEFT,  KC_DOWN,  KC_RGHT
-//   ),
-
-//   [1] = LAYOUT(
-//     _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
-//     _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  RESET,    _______,
-//     _______,  RGB_TOG,  RGB_MOD,  RGB_HUI,  RGB_HUD,  RGB_SAI,  RGB_SAD,  RGB_VAI,  RGB_VAD,  _______,  _______,  _______,  _______,  _______,            _______,
-//     _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,                      _______,  _______,
-//     _______,  _______,  _______,  _______,  BL_DEC,   BL_TOGG,  BL_INC,   BL_STEP,  _______,  _______,  _______,  _______,  _______,            _______,  _______,
-//     _______,  _______,  _______,                      _______,  _______,  _______,                      _______,  _______,  _______,  _______,  _______,  _______
-//   ),
-// };
