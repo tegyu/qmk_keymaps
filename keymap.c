@@ -39,7 +39,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // );
 // Light LEDs 9 & 10 in cyan when keyboard layer 1 is active
 const rgblight_segment_t PROGMEM my_spacebar_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, RGBLED_NUM, HSV_GOLD}
+    {0, RGBLED_NUM, HSV_WHITE}
 );
 
 // Now define the array of layers. Later layers take precedence
@@ -85,7 +85,7 @@ bool led_update_user(led_t led_state) {
   // It receives the LED state as a struct parameter.
 
   // set the state of the first RGB layer (my_capslock_layer) to match caps lock's
-  rgblight_set_layer_state(0, led_state.caps_lock);
+  // rgblight_set_layer_state(0, led_state.caps_lock);
 
   // By convention, return true from led_update_user() to get the led_update_kb() hook to run its code, 
   // and return false when you would prefer not to run the code in led_update_kb().
@@ -104,6 +104,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     // Callback for layer functions, for users.
 
     // lights up rgb layer 0 when key layer 10 is set
-    rgblight_set_layer_state(0, layer_state_cmp(state, 10));
+    rgblight_set_layer_state(0, IS_LAYER_ON_STATE(state, 10));
     return state;
 }
