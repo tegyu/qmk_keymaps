@@ -1,0 +1,2 @@
+# export PATH=/mingw64/bin:/usr/local/bin:/usr/bin:/bin:/conemu/ConEmu/Scripts:/conemu:/conemu/ConEmu:$PATH
+qmk compile -kb kbdfans/kbd75/rev2 -km esnahn

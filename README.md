@@ -8,4 +8,12 @@ This branch is a keymap for kbd75 rev2 PCB
 
 ## Build
 
+Run:
+
     qmk compile -kb kbdfans/kbd75/rev2 -km esnahn
+
+or:
+
+    ./compile
+
+or, run build task `qmk compile` in vscode
