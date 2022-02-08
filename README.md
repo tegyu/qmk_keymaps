@@ -6,4 +6,12 @@
 
 ## Build
 
+Run:
+
     qmk compile -kb <keyboard> -km esnahn
+
+or:
+
+    ./compile
+
+or, run build task `qmk compile` in vscode
