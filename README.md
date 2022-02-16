@@ -8,4 +8,12 @@ This branch is a keymap for XD60 rev3 PCB
 
 ## Build
 
+Run:
+
     qmk compile -kb xiudi/xd60/rev3 -km esnahn
+
+or:
+
+    ./compile
+
+or, run build task `qmk compile` in vscode
