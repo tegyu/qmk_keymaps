@@ -97,11 +97,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // );
 // Light LEDs white when normal layer is active
 const rgblight_segment_t PROGMEM my_normal_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-  {0, RGBLED_NUM, HSV_WHITE}
+  {RGBLED_NUM/2, RGBLED_NUM/2, HSV_WHITE}
 );
 // Light LEDs red when shifted layer is active
 const rgblight_segment_t PROGMEM my_shifted_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-  {8, RGBLED_NUM/2, HSV_RED}
+  {RGBLED_NUM/2, 1, HSV_RED},
+  {RGBLED_NUM-1, 1, HSV_RED}
 );
 // Light LEDs in rainbow when mod key is down
 const rgblight_segment_t PROGMEM my_special_layer[] = RGBLIGHT_LAYER_SEGMENTS(
@@ -122,14 +123,23 @@ const rgblight_segment_t PROGMEM my_special_layer[] = RGBLIGHT_LAYER_SEGMENTS(
   // {14, 1, 256 / RGBLED_NUM * 14, 255, 255},
   // {15, 1, 256 / RGBLED_NUM * 15, 255, 255}
 
-  { 8, 1, 256 / RGBLED_NUM * 0 * 2, 255, 255},
-  { 9, 1, 256 / RGBLED_NUM * 1 * 2, 255, 255},
-  {10, 1, 256 / RGBLED_NUM * 2 * 2, 255, 255},
-  {11, 1, 256 / RGBLED_NUM * 3 * 2, 255, 255},
-  {12, 1, 256 / RGBLED_NUM * 4 * 2, 255, 255},
-  {13, 1, 256 / RGBLED_NUM * 5 * 2, 255, 255},
-  {14, 1, 256 / RGBLED_NUM * 6 * 2, 255, 255},
-  {15, 1, 256 / RGBLED_NUM * 7 * 2, 255, 255}
+  { 0, 1, 256 / 8 * 0, 255, 255},
+  { 1, 1, 256 / 8 * 1, 255, 255},
+  { 2, 1, 256 / 8 * 2, 255, 255},
+  { 3, 1, 256 / 8 * 3, 255, 255},
+  { 4, 1, 256 / 8 * 4, 255, 255},
+  { 5, 1, 256 / 8 * 5, 255, 255},
+  { 6, 1, 256 / 8 * 6, 255, 255},
+  { 7, 1, 256 / 8 * 7, 255, 255},
+
+  { 8, 1, 256 / 8 * 0, 255, 255},
+  { 9, 1, 256 / 8 * 1, 255, 255},
+  {10, 1, 256 / 8 * 2, 255, 255},
+  {11, 1, 256 / 8 * 3, 255, 255},
+  {12, 1, 256 / 8 * 4, 255, 255},
+  {13, 1, 256 / 8 * 5, 255, 255},
+  {14, 1, 256 / 8 * 6, 255, 255},
+  {15, 1, 256 / 8 * 7, 255, 255}
 );
 
 // Now define the array of layers. Later layers take precedence
