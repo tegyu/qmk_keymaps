@@ -30,4 +30,8 @@ SLEEP_LED_ENABLE = no       # Breathing sleep LED during USB suspend
 UNICODE_ENABLE = no          # Cannot enable more than one Unicode method (UNICODE, UNICODEMAP, UCIS) at the same time
 UNICODEMAP_ENABLE = yes      # Unicode Map
 
+# macro
+SEND_STRING_ENABLE = yes	 # enabled by default
+DYNAMIC_MACRO_ENABLE = yes
+
 LAYOUTS = esnahn
