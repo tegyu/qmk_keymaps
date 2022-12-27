@@ -8,6 +8,34 @@
 	K400,       K402, K403, K404, K405, K406, K407, K408, K409, K410, K411,       K413, K414, K415, \
 	K500, K501,       K503, K504,       K506,       K508,       K510, K511,       K513, K514, K515  \ */
 
+
+// unicode
+enum unicode_names {
+    MIDDOT,
+    ELLIPS,
+    NBSP,
+    LCORNB,
+    RCORNB,
+    LWCRNB,
+    RWCRNB,
+    SUP2,
+    REFERM,
+};
+
+const uint32_t PROGMEM unicode_map[] = {
+    [MIDDOT] = 0x00B7,   // ·   middle dot
+    [ELLIPS] = 0x2026,   // …   ellipsis
+    [NBSP]   = 0x00A0,   // No-Break Space
+    [LCORNB] = 0x300C,   // 「  left corner bracket
+    [RCORNB] = 0x300D,   // 」  right corner bracket
+    [LWCRNB] = 0x300E,   // 『  left white corner bracket
+    [RWCRNB] = 0x300F,   // 』  right white corner bracket
+    [SUP2]   = 0x00B2,   // ²   superscript two
+    [REFERM] = 0x203B,   // ※   reference mark
+};
+
+// keymaps
+
 enum _keymap_layers {
   _QWERTY = 0,
   // _SFT_FUNC,
@@ -62,11 +90,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // middle key Layer
   [_MID_SPC] = LAYOUT_kbd75_esnahn(
     _______,  _______,  KC_F13,   KC_F14,   KC_F15,   KC_F16,   KC_F17,   KC_F18,   KC_F19,   KC_F20,   KC_F21,   KC_F22,   KC_F23,   KC_F24,   _______,  _______,
-    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  KC_MUTE,  KC_VOLD,  KC_VOLU,  KC_MPLY,            _______,
-    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,            _______,
+    _______,  _______,  X(SUP2),  _______,  _______,  _______,  _______,  _______,  _______,  _______,  KC_MUTE,  KC_VOLD,  KC_VOLU,  KC_MPLY,            _______,
+    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  XP(LCORNB,LWCRNB),
+                                                                                                                            XP(RCORNB,RWCRNB), 
+                                                                                                                                      _______,            _______,
     KC_CAPS,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,            _______,            _______,
-    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,            _______,  _______,  _______,  _______,            _______,  _______,
-    _______,  _______,  _______,                      _______,  _______,  _______,                      _______,  KC_LNG2,            _______,  _______,  _______
+    _______,  _______,  X(REFERM),_______,  _______,  _______,  _______,  _______,            X(MIDDOT),X(ELLIPS),_______,  _______,            _______,  _______,
+    _______,  _______,  _______,                      X(NBSP),  _______,  _______,                      _______,  KC_LNG2,            _______,  _______,  _______
   ),
 
   // normal Layer; should be higher than other toggle layers

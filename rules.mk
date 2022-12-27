@@ -23,8 +23,11 @@ COMMAND_ENABLE = no         # Commands for debug and configuration
 BACKLIGHT_ENABLE = no      # Enable keyboard backlight functionality
 MIDI_ENABLE = no            # MIDI controls
 AUDIO_ENABLE = no           # Audio output on port C6
-UNICODE_ENABLE = no         # Unicode
 BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID
 SLEEP_LED_ENABLE = no       # Breathing sleep LED during USB suspend
+
+# unicode
+UNICODE_ENABLE = no          # Cannot enable more than one Unicode method (UNICODE, UNICODEMAP, UCIS) at the same time
+UNICODEMAP_ENABLE = yes      # Unicode Map
 
 LAYOUTS = esnahn
